@@ -7,5 +7,3 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  jap:
-    defer-datasource-initialization:true
