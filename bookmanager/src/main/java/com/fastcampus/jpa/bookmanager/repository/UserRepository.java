@@ -1,18 +1,23 @@
 package com.fastcampus.jpa.bookmanager.repository;
 
 import com.fastcampus.jpa.bookmanager.domain.User;
-
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-/**
- * @author Martin
- * @since 2021/03/10
- */
+
 public interface UserRepository extends JpaRepository<User, Long> {
     Set<User> findByName(String name);
+
+    Set<User> findUserByNameIs(String name);
+    Set<User> findUserByName(String name);
+    Set<User> findUserByNameEquals(String name);
 
     User findByEmail(String email);
 
@@ -67,4 +72,17 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByNameContains(String name);
 
     List<User> findByNameLike(String name);
+
+    List<User> findTop1ByName(String name);
+
+    List<User> findTopByNameOrderByIdDesc(String name);
+
+    List<User> findFirstByNameOrderByIdDescEmailAsc(String name);
+
+    List<User> findFirstByName(String name, Sort sort);
+
+    Page<User> findByName(String name, Pageable pageable);
+
+    @Query(value = "select * from user limit 1;", nativeQuery = true)
+    Map<String, Object> findRawRecord();
 }

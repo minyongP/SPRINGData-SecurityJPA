@@ -10,10 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-/**
- * @author Martin
- * @since 2021/02/24
- */
+
 @WebMvcTest
 class HelloWorldControllerTest {
     @Autowired
