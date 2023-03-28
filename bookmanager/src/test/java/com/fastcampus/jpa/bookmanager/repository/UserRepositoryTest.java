@@ -181,7 +181,7 @@ class UserRepositoryTest {
         user.setEmail("deniel@fc.com");
         userRepository.save(user);
 
-//        userHistoryRepository.findAll().forEach(System.out::println);
+        userHistoryRepository.findAll().forEach(System.out::println);
 
 //        List<UserHistory> result = userHistoryRepository.findByUserId(
 //                userRepository.findByEmail("deniel@fc.com").getId());
@@ -190,5 +190,7 @@ class UserRepositoryTest {
                         .getUserHistories();
 
         result.forEach(System.out::println);
+
+        System.out.println("UserHistory.getUser() : " + userHistoryRepository.findAll().get(0).getUser());
     }
 }
